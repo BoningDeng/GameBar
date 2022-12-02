@@ -11,50 +11,20 @@ void printList(vector<Game> output)
 {
 	for (int i = 0; i < output.size(); i++)
 	{
-		cout << "Name: " << output[i].getName() << endl;
-		cout << "Platform: " << output[i].getPlatform() << endl;
-		cout << "Release Date:" << output[i].getRelease_date() << endl;
-		cout << "Meta Score: " << output[i].getMeta_score() << endl;
-		cout << "User Review:" << output[i].getUser_review() << endl;
-		cout << "Summary: " << output[i].getSummary() << endl;
+		std::cout << "Name: " << output[i].getName() << endl;
+		std::cout << "Platform: " << output[i].getPlatform() << endl;
+		std::cout << "Release Date:" << output[i].getRelease_date() << endl;
+		std::cout << "Meta Score: " << output[i].getMeta_score() << endl;
+		std::cout << "User Review:" << output[i].getUser_review() << endl;
+		std::cout << "Summary: " << output[i].getSummary() << endl;
+		std::cout << " " << endl;
 	}
 }
 
-//pass both vector into function
-void sortingMenu()
+vector<Game> readData()
 {
-	string input;
-	cout << "1.Quick sort" << endl;
-	cout << "2.Merge sort" << endl;
-	cout << "Input: ";
-	cin >> input;
-	if (stoi(input) == 1)
-	{
-		//Quick sort here
-		//test
-		cout << "quick" << endl;
+	vector<Game> Games;
 
-		auto start = chrono::high_resolution_clock::now();
-		//run the algorithm here
-		//pass the output into print
-		//printList();
-		auto stop = chrono::high_resolution_clock::now();
-		auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
-		cout << "Runtime: " << runtime.count() << " ms" << endl;
-	}
-	else if (stoi(input) == 2)
-	{
-		//Merge sort here
-		//test
-		cout << "merge" << endl;
-
-		//pass the output here
-		//printList();
-	}
-}
-
-int main()
-{
 	string name;
 	string platform;
 	string release_date;
@@ -63,8 +33,6 @@ int main()
 	string tempUser_review;
 	int meta_score;
 	float user_review;
-
-	vector<Game> Games;
 
 	fstream file;
 	file.open("all_games.csv", ios::in);
@@ -82,18 +50,24 @@ int main()
 		Game temp(name, platform, release_date, summary, meta_score, user_review);
 		Games.push_back(temp);
 	}
+	return Games;
+}
+
+int main()
+{
+	vector<Game> Games = readData();
 
 	bool endProgram = false;
 	string input;
 	while (!endProgram)
 	{
-		cout << "Game Bar" << endl;
-		cout << "0.Exit" << endl;
-		cout << "1.Listing all games" << endl;
-		cout << "2.Listing the top 20 games by rating" << endl;
-		cout << "3.Searching by name" << endl;
-		cout << "4.Filtering  by platform" << endl;
-		cout << "Input: ";
+		std::cout << "Game Bar" << endl;
+		std::cout << "0.Exit" << endl;
+		std::cout << "1.Listing all games by rating" << endl;
+		std::cout << "2.Listing the top 20 games by rating" << endl;
+		std::cout << "3.Searching by name" << endl;
+		std::cout << "4.Filtering by platform" << endl;
+		std::cout << "Input: ";
 		cin >> input;
 		switch(stoi(input)) 
 		{
@@ -102,25 +76,157 @@ int main()
 			break;
 
 		case 1:
-			sortingMenu();
+			std::cout << "1.Quick sort" << endl;
+			std::cout << "2.Merge sort" << endl;
+			std::cout << "Input: ";
+			cin >> input;
+			if (stoi(input) == 1)
+			{
+				//Quick sort here
+				//test
+				std::cout << "quick" << endl;
+
+				auto start = chrono::high_resolution_clock::now();
+				//run the algorithm here
+				//pass the output into print
+				//printList(Games);
+				auto stop = chrono::high_resolution_clock::now();
+				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
+				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
+				std::cout << " " << endl;
+			}
+			else if (stoi(input) == 2)
+			{
+				//Merge sort here
+				//test
+				std::cout << "merge" << endl;
+
+				auto start = chrono::high_resolution_clock::now();
+				//run the algorithm here
+				//pass the output into print
+				//printList(Games);
+				auto stop = chrono::high_resolution_clock::now();
+				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
+				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
+				std::cout << " " << endl;
+			}
 			break;
 
 		case 2:
-			sortingMenu();
+			std::cout << "1.Quick sort" << endl;
+			std::cout << "2.Merge sort" << endl;
+			std::cout << "Input: ";
+			cin >> input;
+			if (stoi(input) == 1)
+			{
+				//Quick sort here
+				//test
+				std::cout << "quick" << endl;
+
+				auto start = chrono::high_resolution_clock::now();
+				//run the algorithm here
+				//pass the output into print
+				//printList(Games);
+				auto stop = chrono::high_resolution_clock::now();
+				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
+				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
+				std::cout << " " << endl;
+			}
+			else if (stoi(input) == 2)
+			{
+				//Merge sort here
+				//test
+				std::cout << "merge" << endl;
+
+				auto start = chrono::high_resolution_clock::now();
+				//run the algorithm here
+				//pass the output into print
+				//printList(Games);
+				auto stop = chrono::high_resolution_clock::now();
+				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
+				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
+				std::cout << " " << endl;
+			}
 			break;
 
 		case 3:
-			sortingMenu();
+			std::cout << "1.Quick sort" << endl;
+			std::cout << "2.Merge sort" << endl;
+			std::cout << "Input: ";
+			cin >> input;
+			if (stoi(input) == 1)
+			{
+				//Quick sort here
+				//test
+				std::cout << "quick" << endl;
+
+				auto start = chrono::high_resolution_clock::now();
+				//run the algorithm here
+				//pass the output into print
+				//printList(Games);
+				auto stop = chrono::high_resolution_clock::now();
+				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
+				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
+				std::cout << " " << endl;
+			}
+			else if (stoi(input) == 2)
+			{
+				//Merge sort here
+				//test
+				std::cout << "merge" << endl;
+
+				auto start = chrono::high_resolution_clock::now();
+				//run the algorithm here
+				//pass the output into print
+				//printList(Games);
+				auto stop = chrono::high_resolution_clock::now();
+				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
+				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
+				std::cout << " " << endl;
+			}
 			break;
 
 		case 4:
-			sortingMenu();
+			std::cout << "1.Quick sort" << endl;
+			std::cout << "2.Merge sort" << endl;
+			std::cout << "Input: ";
+			cin >> input;
+			if (stoi(input) == 1)
+			{
+				//Quick sort here
+				//test
+				std::cout << "quick" << endl;
+
+				auto start = chrono::high_resolution_clock::now();
+				//run the algorithm here
+				//pass the output into print
+				//printList(Games);
+				auto stop = chrono::high_resolution_clock::now();
+				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
+				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
+				std::cout << " " << endl;
+			}
+			else if (stoi(input) == 2)
+			{
+				//Merge sort here
+				//test
+				std::cout << "merge" << endl;
+
+				auto start = chrono::high_resolution_clock::now();
+				//run the algorithm here
+				//pass the output into print
+				//printList(Games);
+				auto stop = chrono::high_resolution_clock::now();
+				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
+				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
+				std::cout << " " << endl;
+			}
 			break;
 
 		default:
 			break;
 		}
 	}
-	cout << "Exiting..." << endl;
+	std::cout << "Exiting..." << endl;
 	return 0;
 }
