@@ -15,8 +15,7 @@ int partition(vector<Game> vect, int low, int high) {
     int i = (low - 1);
 
     for (int j = low; j <= high - 1; j++) {
-        if (vect[j].getMeta_score() > pivot.getMeta_score()) {
-         //   cout << 2 << endl;
+        if (vect[j].getUser_review() > pivot.getUser_review()) {
             i++;
             swap(vect[i], vect[j]);
         }
@@ -30,8 +29,7 @@ int partition2(vector<Game> vect, int low, int high) {
 	int i = (low - 1);
 
 	for (int j = low; j <= high - 1; j++) {
-		if (vect[j].getUser_review() > pivot.getUser_review()) {
-			//   cout << 2 << endl;
+		if (vect[j].getMeta_score() > pivot.getMeta_score()) {
 			i++;
 			swap(vect[i], vect[j]);
 		}
@@ -40,27 +38,27 @@ int partition2(vector<Game> vect, int low, int high) {
 	return (i + 1);
 }
 
-void quickSortHelper(vector<Game> vect, int low, int high, int input)
+void quickSort(vector<Game> vect, int low, int high, int input)
 {
 	if (input == 1) {
 		if (low < high) {
 			int pi = partition(vect, low, high);
 
-			quickSortHelper(vect, low, pi - 1, input);
-			quickSortHelper(vect, pi + 1, high, input);
+			quickSort(vect, low, pi - 1, input);
+			quickSort(vect, pi + 1, high, input);
 		}
 	}
 	else if (input == 2) {
 		if (low < high) {
 			int pi = partition2(vect, low, high);
 
-			quickSortHelper(vect, low, pi - 1, input);
-			quickSortHelper(vect, pi + 1, high, input);
+			quickSort(vect, low, pi - 1, input);
+			quickSort(vect, pi + 1, high, input);
 		}
 	}
 }
 
-void quickSort(vector<Game> Games, int input) {
+void quickSortHelper(vector<Game> Games, int input) {
 	vector<Game> tempVect;
 	vector<Game> tempVect2;
 	vector<Game> tempVect3;
@@ -111,25 +109,25 @@ void quickSort(vector<Game> Games, int input) {
 		tempVect10.push_back(Games[i]);
 	}
 
-	quickSortHelper(tempVect, 0, tempVect.size() - 1, input);
+	quickSort(tempVect, 0, tempVect.size() - 1, input);
 	std::cout << "part 1 done" << std::endl;
-	quickSortHelper(tempVect2, 0, tempVect2.size() - 1, input);
+	quickSort(tempVect2, 0, tempVect2.size() - 1, input);
 	std::cout << "part 2 done" << std::endl;
-	quickSortHelper(tempVect3, 0, tempVect3.size() - 1, input);
+	quickSort(tempVect3, 0, tempVect3.size() - 1, input);
 	std::cout << "part 3 done" << std::endl;
-	quickSortHelper(tempVect4, 0, tempVect4.size() - 1, input);
+	quickSort(tempVect4, 0, tempVect4.size() - 1, input);
 	std::cout << "part 4 done" << std::endl;
-	quickSortHelper(tempVect5, 0, tempVect5.size() - 1, input);
+	quickSort(tempVect5, 0, tempVect5.size() - 1, input);
 	std::cout << "part 5 done" << std::endl;
-	quickSortHelper(tempVect6, 0, tempVect6.size() - 1, input);
+	quickSort(tempVect6, 0, tempVect6.size() - 1, input);
 	std::cout << "part 6 done" << std::endl;
-	quickSortHelper(tempVect7, 0, tempVect7.size() - 1, input);
+	quickSort(tempVect7, 0, tempVect7.size() - 1, input);
 	std::cout << "part 7 done" << std::endl;
-	quickSortHelper(tempVect8, 0, tempVect8.size() - 1, input);
+	quickSort(tempVect8, 0, tempVect8.size() - 1, input);
 	std::cout << "part 8 done" << std::endl;
-	quickSortHelper(tempVect9, 0, tempVect9.size() - 1, input);
+	quickSort(tempVect9, 0, tempVect9.size() - 1, input);
 	std::cout << "part 9 done" << std::endl;
-	quickSortHelper(tempVect10, 0, tempVect10.size() - 1, input);
+	quickSort(tempVect10, 0, tempVect10.size() - 1, input);
 	std::cout << "part 10 done" << std::endl;
 
 	vector<Game> Games2;
