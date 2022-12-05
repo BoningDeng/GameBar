@@ -125,6 +125,9 @@ int main()
 				auto start = chrono::high_resolution_clock::now();
 
 				quickSortHelper(Games, rating);
+				if (rating == 1) {
+					reverse(Games.begin(), Games.end());
+				}
 				printList(Games, Games.size());
 
 				auto stop = chrono::high_resolution_clock::now();
@@ -180,6 +183,9 @@ int main()
 				auto start = chrono::high_resolution_clock::now();
 
 				quickSortHelper(Games, rating);
+				if (rating == 1) {
+					reverse(Games.begin(), Games.end());
+				}
 				printList(Games, numGames);
 
 				auto stop = chrono::high_resolution_clock::now();
@@ -239,6 +245,9 @@ int main()
 				auto start = chrono::high_resolution_clock::now();
 
 				quickSort(newList, 0, newList.size() - 1, rating);
+				if (rating == 1) {
+					reverse(newList.begin(), newList.end());
+				}
 				printList(newList, numGames);
 
 				auto stop = chrono::high_resolution_clock::now();
@@ -313,6 +322,9 @@ int main()
 				auto start = chrono::high_resolution_clock::now();
 
 				quickSort(newList, 0, newList.size() - 1, rating);
+				if (rating == 1) {
+					reverse(newList.begin(), newList.end());
+				}
 				printList(newList, numGames);
 
 				auto stop = chrono::high_resolution_clock::now();
