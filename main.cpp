@@ -1,6 +1,5 @@
 #include "QuickSort.h"
-//#include "mergeSort.cpp"
-//#include "Game.h"
+#include "Game.h"
 #include <fstream>
 #include <algorithm>
 #include <chrono>  
