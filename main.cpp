@@ -61,7 +61,7 @@ int main()
 	string input;
 	while (!endProgram)
 	{
-		std::cout << "Game Bar" << endl;
+		std::cout << "Welcome to Game Bar" << endl;
 		std::cout << "0.Exit" << endl;
 		std::cout << "1.Listing all games by rating" << endl;
 		std::cout << "2.Listing the top 20 games by rating" << endl;
