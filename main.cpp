@@ -104,6 +104,7 @@ int main()
 
 		case 1:
 			//Updated: Users choose what to sort by. 
+			std::cout << std::endl;
 			std::cout << "Sort by?" << endl;
 			std::cout << "1.User Rating" << endl;
 			std::cout << "2.Metascore" << endl;
@@ -121,11 +122,11 @@ int main()
 			if (stoi(input) == 1)
 			{
 				std::cout << "Quick Sort" << endl;
-				std::cout << Games.size() << endl;
 				auto start = chrono::high_resolution_clock::now();
 
 				quickSortHelper(Games, rating);
 				printList(Games, Games.size());
+
 				auto stop = chrono::high_resolution_clock::now();
 				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
 				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
