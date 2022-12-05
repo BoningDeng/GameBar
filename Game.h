@@ -19,6 +19,7 @@ public:
 	string getSummary();
 	int getMeta_score();
 	float getUser_review();
+	void setUser_review(float review);
 };
 
 Game::Game(string name_, string platform_, string release_date_, string summary_, int meta_score_, float user_review_)
@@ -59,4 +60,9 @@ int Game::getMeta_score()
 float Game::getUser_review()
 {
 	return user_review;
+}
+
+//Added: A set for user review because some values are -1. Use this to change them to 0.
+void Game::setUser_review(float review) {
+	user_review = review;
 }
