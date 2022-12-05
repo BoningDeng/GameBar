@@ -10,7 +10,7 @@ using namespace std;
 
 //Helper merge function
 void merge(Game* arr[], int left, int middle, int right){
-    int const leftSub = mid - left + 1;
+    int const leftSub = middle - left + 1;
     int const rightSub = right - middle;
  
     // Create temp arrays for left and right 
