@@ -90,4 +90,4 @@ void mergeSort(Game* arr[], int start, int end){
     merge(arr, begin, mid, end);
   
     printArray(arr);
-} 
+}  
