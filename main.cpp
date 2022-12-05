@@ -1,5 +1,6 @@
 #include "QuickSort.h"
 #include "Game.h"
+#include "MergeSort.h"
 #include <fstream>
 #include <algorithm>
 #include <chrono>  
@@ -135,16 +136,12 @@ int main()
 			}
 			else if (stoi(input) == 2)
 			{
-				//Merge sort here
-				//test
-				//Make sure to have mergesort sort both Rating and MetaScore.
 				std::cout << "merge" << endl;
 
 				auto start = chrono::high_resolution_clock::now();
-				//run the algorithm here
-
-				//pass the output into print
-				//printList(Games, numGames);
+				
+				mergeSort(Games, 0, Games.size() - 1);
+				printList(Games, Games.size());
 				auto stop = chrono::high_resolution_clock::now();
 				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
 				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
