@@ -1,6 +1,12 @@
-#include <bits/stdc++. h>
+#pragma once
+#include "Game.h"
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <algorithm>
+#include <chrono>  
 using namespace std;
-#include Game.h
 
 //Helper merge function
 void merge(Game* arr[], int left, int middle, int right){
