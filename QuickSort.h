@@ -64,7 +64,7 @@ void quickSort(vector<Game> vect, int low, int high, int input)
 		}
 	}
 }
-
+/*
 void quickSortHelper(vector<Game> Games, int input) {
 	vector<Game> tempVect;
 	vector<Game> tempVect2;
@@ -177,5 +177,6 @@ void quickSortHelper(vector<Game> Games, int input) {
 	for (int i = 0; i < tempVect10.size(); i++) {
 		Games2.push_back(tempVect10[i]);
 	}
+	quickSort(Games2, 0, Games2.size(), input);
 	Games = Games2;
-}
+}*/

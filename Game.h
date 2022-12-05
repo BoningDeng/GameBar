@@ -62,6 +62,6 @@ float Game::getUser_review()
 	return user_review;
 }
 
-void setUser_review(float newReview) {
+void Game::setUser_review(float newReview) {
 	user_review = newReview;
 }

@@ -124,7 +124,7 @@ int main()
 				std::cout << "Quick Sort" << endl;
 				auto start = chrono::high_resolution_clock::now();
 
-				quickSortHelper(Games, rating);
+				quickSort(Games, 0, Games.size(), rating);
 				if (rating == 1) {
 					reverse(Games.begin(), Games.end());
 				}
@@ -182,7 +182,7 @@ int main()
 
 				auto start = chrono::high_resolution_clock::now();
 
-				quickSortHelper(Games, rating);
+				quickSort(Games, 0, Games.size(), rating);
 				if (rating == 1) {
 					reverse(Games.begin(), Games.end());
 				}
