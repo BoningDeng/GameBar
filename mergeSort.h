@@ -23,7 +23,7 @@ void merge(vector<Game*> arr, int left, int middle, int right){
     for (int i = 0; i < leftSub; i++)
         L[i] = arr[left + i];
     for (int i = 0; i < rightSub; i++)
-        R[j] = arr[middle + 1 + i];
+        R[i] = arr[middle + 1 + i];
  
     //Declare indexes for the temporary arrays, those will be updated while merging
     int leftIndex = 0;
@@ -64,13 +64,13 @@ void mergeSort(vector<Game*> arr, int start, int end){
     if (start >= end)
         return; 
  
-    int middle = start + (end - begin) / 2;
+    int middle = start + (end - start) / 2;
   
     //Recursively call mergeSort for left array (left to middle) and right array (middle to right)
     mergeSort(arr, start, middle);
     mergeSort(arr, middle + 1, end);
   
     
-    merge(arr, begin, mid, end);
+    merge(arr, start, middle, end);
   
 }  
