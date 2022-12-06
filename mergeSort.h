@@ -28,7 +28,7 @@ void merge(vector<Game*> arr, int left, int middle, int right){
     //Declare indexes for the temporary arrays, those will be updated while merging
     int leftIndex = 0;
     int rightIndex = 0;
-    int merged = start;
+    int merged = left;
  
     // Merge both temp arrays into a single 
     while (leftIndex < leftSub && rightIndex < rightSub) {
