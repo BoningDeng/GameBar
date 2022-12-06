@@ -15,8 +15,15 @@ void printList(vector<Game*> output, int value)
 		std::cout << "Platform: " << output[i]->getPlatform() << endl;
 		std::cout << "Release Date:" << output[i]->getRelease_date() << endl;
 		std::cout << "Meta Score: " << output[i]->getMeta_score() << endl;
-		std::cout << "User Review:" << output[i]->getUser_review() << endl;
-		std::cout << "Summary: " << output[i]->getSummary() << endl;
+		if (output[i]->getUser_review() == -1)
+		{
+			std::cout << "User Review:" << "TBD" << endl;
+		}
+		else
+		{
+			std::cout << "User Review:" << output[i]->getUser_review() << endl;
+		}
+		//std::cout << "Summary: " << output[i]->getSummary() << endl;
 		std::cout << " " << endl;
 	}
 }
