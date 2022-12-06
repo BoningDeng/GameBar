@@ -194,8 +194,7 @@ int main()
 
 				auto start = chrono::high_resolution_clock::now();
 				mergeSort(Games, 0, Games.size() - 1, rating);
-				if (input == "all")
-					reverse(Games.begin(), Games.end());
+				reverse(Games.begin(), Games.end());
 				printList(Games, numGames);
 				auto stop = chrono::high_resolution_clock::now();
 				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
