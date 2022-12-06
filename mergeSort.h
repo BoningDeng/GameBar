@@ -32,6 +32,11 @@ void merge(vector<Game*> arr, int left, int middle, int right){
  
     // Merge both temp arrays into a single 
     while (leftIndex < leftSub && rightIndex < rightSub) {
+        if (L[leftIndex]->getUser_review() == -1) {
+			L[leftIndex]->setUser_review(0);
+	    if (R[rightIndex]->getUser_review() == -1) {
+			R[rightIndex]->setUser_review(0);
+		}
         if (L[leftIndex]->getUser_review() <= R[rightIndex]->getUser_review()) {
             arr[merged] = L[leftIndex];
             leftIndex++;
@@ -80,6 +85,11 @@ void merge2(vector<Game*> arr, int left, int middle, int right){
  
     // Merge both temp arrays into a single 
     while (leftIndex < leftSub && rightIndex < rightSub) {
+        if (L[leftIndex]->getMeta_score() == -1) {
+			L[leftIndex]->setMeta_score(0);
+	    if (R[rightIndex]->getMeta_score() == -1) {
+			R[rightIndex]->setMeta_score(0);
+		}
         if (L[leftIndex]->getMeta_score() <= R[rightIndex]->getMeta_score()) {
             arr[merged] = L[leftIndex];
             leftIndex++;
@@ -113,12 +123,12 @@ void mergeSort(vector<Game*> arr, int start, int end, int input){
                 int middle = (start + end) / 2;
   
             //Recursively call mergeSort for left array (left to middle) and right array (middle to right)
-            mergeSort(arr, start, middle, input);
-            mergeSort(arr, middle + 1, end, input);
-            merge(arr, start, middle, end);
+                mergeSort(arr, start, middle, input);
+                mergeSort(arr, middle + 1, end, input);
+                merge(arr, start, middle, end);
             } else if (input == 2) {
  
-                int middle = start + (end - start) / 2;
+                int middle = (start + end) / 2;
                 mergeSort(arr, start, middle, input);
                 mergeSort(arr, middle + 1, end, input);
                 merge2(arr, start, middle, end);
