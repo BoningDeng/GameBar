@@ -9,112 +9,74 @@
 using namespace std;
 
 //Helper merge function
-void merge(vector<Game*> arr, int left, int middle, int right){
-    int const leftSub = middle - left + 1;
-    int const rightSub = right - middle;
- 
-    // Create temp arrays for left and right 
-    vector<Game*> L, R;
-    
-    L.resize(leftSub);
-    R.resize(rightSub);
- 
-    // Copy data from our game Array into the temporary arrays.
-    for (int i = 0; i < leftSub; i++)
-        L[i] = arr[left + i];
-    for (int i = 0; i < rightSub; i++)
-        R[i] = arr[middle + 1 + i];
- 
-    //Declare indexes for the temporary arrays, those will be updated while merging
-    int leftIndex = 0;
-    int rightIndex = 0;
-    int merged = left;
- 
-    // Merge both temp arrays into a single 
-    while (leftIndex < leftSub && rightIndex < rightSub) {
-        if (L[leftIndex]->getUser_review() == -1) {
-		L[leftIndex]->setUser_review(0);
+void merge(vector<Game*> v, int s, int m, int e){
+    vector<Game*> temp;
+
+	int i, j;
+	i = s;
+	j = m + 1;
+
+	while (i <= m && j <= e) {
+
+		if (v[i]->getUser_score <= v[j]->getUser_Score) {
+			temp.push_back(v[i]);
+			++i;
+		}
+		else {
+			temp.push_back(v[j]);
+			++j;
+		}
+
 	}
-	if (R[rightIndex]->getUser_review() == -1) {
-		R[rightIndex]->setUser_review(0);
-        }
-        if (L[leftIndex]->getUser_review() <= R[rightIndex]->getUser_review()) {
-            arr[merged] = L[leftIndex];
-            leftIndex++;
-        }
-        else {
-            arr[merged] = R[rightIndex];
-            rightIndex++;
-        }
-        merged++;
-    }
-                    
-    // Copy the remaining elements of left and right
-    while (leftIndex < leftSub) {
-        arr[merged] = L[leftIndex];
-        leftIndex++;
-        merged++;
-    }
-    while (rightIndex < rightSub) {
-        arr[merged] = R[rightIndex];
-        rightIndex++;
-        merged++;
-    }
+
+	while (i <= m) {
+		temp.push_back(v[i]);
+		++i;
+	}
+
+	while (j <= e) {
+		temp.push_back(v[j]);
+		++j;
+	}
+
+	for (int i = s; i <= e; ++i)
+		v[i] = temp[i - s];
+
     
 }
 
-void merge2(vector<Game*> arr, int left, int middle, int right){
-    int const leftSub = middle - left + 1;
-    int const rightSub = right - middle;
- 
-    // Create temp arrays for left and right 
-    vector<Game*> L, R;
-    
-    L.resize(leftSub);
-    R.resize(rightSub);
- 
-    // Copy data from our game Array into the temporary arrays.
-    for (int i = 0; i < leftSub; i++)
-        L[i] = arr[left + i];
-    for (int i = 0; i < rightSub; i++)
-        R[i] = arr[middle + 1 + i];
- 
-    //Declare indexes for the temporary arrays, those will be updated while merging
-    int leftIndex = 0;
-    int rightIndex = 0;
-    int merged = left;
- 
-    // Merge both temp arrays into a single 
-    while (leftIndex < leftSub && rightIndex < rightSub) {
-        if (L[leftIndex]->getMeta_score() == -1) {
-		L[leftIndex]->setMeta_score(0);
+void merge2(vector<Game*> v, int s, int m, int e){
+    vector<Game*> temp;
+
+	int i, j;
+	i = s;
+	j = m + 1;
+
+	while (i <= m && j <= e) {
+
+		if (v[i]->getUser_score <= v[j]->getUser_Score) {
+			temp.push_back(v[i]);
+			++i;
+		}
+		else {
+			temp.push_back(v[j]);
+			++j;
+		}
+
 	}
-	if (R[rightIndex]->getMeta_score() == -1) {
-		R[rightIndex]->setMeta_score(0);
+
+	while (i <= m) {
+		temp.push_back(v[i]);
+		++i;
 	}
-        if (L[leftIndex]->getMeta_score() <= R[rightIndex]->getMeta_score()) {
-            arr[merged] = L[leftIndex];
-            leftIndex++;
-        }
-        else {
-            arr[merged] = R[rightIndex];
-            rightIndex++;
-        }
-        merged++;
-    }
-                    
-    // Copy the remaining elements of left and right
-    while (leftIndex < leftSub) {
-        arr[merged] = L[leftIndex];
-        leftIndex++;
-        merged++;
-    }
-    while (rightIndex < rightSub) {
-        arr[merged] = R[rightIndex];
-        rightIndex++;
-        merged++;
-    }
-    
+
+	while (j <= e) {
+		temp.push_back(v[j]);
+		++j;
+	}
+
+	for (int i = s; i <= e; ++i)
+		v[i] = temp[i - s];
 }
                     
 
