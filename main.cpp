@@ -1,38 +1,39 @@
 #include "QuickSort.h"
 #include "Game.h"
+#include "mergeSort.h"
 #include <fstream>
 #include <algorithm>
 #include <chrono>  
 using namespace std;
 
 //Updated: printList to intake a value which could be the size of Games.
-void printList(vector<Game> output, int value)
+void printList(vector<Game*> output, int value)
 {
 	for (int i = 0; i < value; i++)
 	{
-		std::cout << "Name: " << output[i].getName() << endl;
-		std::cout << "Platform: " << output[i].getPlatform() << endl;
-		std::cout << "Release Date:" << output[i].getRelease_date() << endl;
-		std::cout << "Meta Score: " << output[i].getMeta_score() << endl;
-		std::cout << "User Review:" << output[i].getUser_review() << endl;
-		std::cout << "Summary: " << output[i].getSummary() << endl;
+		std::cout << "Name: " << output[i]->getName() << endl;
+		std::cout << "Platform: " << output[i]->getPlatform() << endl;
+		std::cout << "Release Date:" << output[i]->getRelease_date() << endl;
+		std::cout << "Meta Score: " << output[i]->getMeta_score() << endl;
+		std::cout << "User Review:" << output[i]->getUser_review() << endl;
+		std::cout << "Summary: " << output[i]->getSummary() << endl;
 		std::cout << " " << endl;
 	}
 }
 
 //Added: searchList which will return a list of Games with either the platform or name being found through a given string. INPUT 1 FOR NAME AND 2 FOR PLATFORM
-vector<Game> searchList(vector<Game> output, std::string search, int input) {
-	vector<Game> tempList;
+vector<Game*> searchList(vector<Game*> output, std::string search, int input) {
+	vector<Game*> tempList;
 	if (input == 1) {
 		for (int i = 0; i < output.size(); i++) {
-			if (output[i].getName().find(search) != std::string::npos) {
+			if (output[i]->getName().find(search) != std::string::npos) {
 				tempList.push_back(output[i]);
 			}
 		}
 	}
 	else if (input == 2) {
 		for (int i = 0; i < output.size(); i++) {
-			if (output[i].getPlatform().find(search) != std::string::npos) {
+			if (output[i]->getPlatform().find(search) != std::string::npos) {
 				tempList.push_back(output[i]);
 			}
 		}
@@ -40,9 +41,9 @@ vector<Game> searchList(vector<Game> output, std::string search, int input) {
 	return tempList;
 }
 
-vector<Game> readData()
+vector<Game*> readData()
 {
-	vector<Game> Games;
+	vector<Game*> Games;
 
 	string name;
 	string platform;
@@ -66,7 +67,7 @@ vector<Game> readData()
 		user_review = stof(tempUser_review);
 		getline(file, summary);
 
-		Game temp(name, platform, release_date, summary, meta_score, user_review);
+		Game* temp = new Game(name, platform, release_date, summary, meta_score, user_review);
 		Games.push_back(temp);
 	}
 	return Games;
@@ -74,8 +75,8 @@ vector<Game> readData()
 
 int main()
 {
-	vector<Game> Games = readData();
-	
+	vector<Game*> Games = readData();
+
 	int numGames;
 	int rating;
 	bool endProgram = false;
@@ -96,7 +97,7 @@ int main()
 		std::cout << "4.Searching by platform" << endl;
 		std::cout << "Input: ";
 		cin >> input;
-		switch(stoi(input)) 
+		switch (stoi(input))
 		{
 		case 0:
 			endProgram = true;
@@ -124,7 +125,8 @@ int main()
 				std::cout << "Quick Sort" << endl;
 				auto start = chrono::high_resolution_clock::now();
 
-				quickSortHelper(Games, rating);
+				quickSort(Games, 0, Games.size() - 1, rating);
+				reverse(Games.begin(), Games.end());
 				printList(Games, Games.size());
 
 				auto stop = chrono::high_resolution_clock::now();
@@ -134,16 +136,12 @@ int main()
 			}
 			else if (stoi(input) == 2)
 			{
-				//Merge sort here
-				//test
-				//Make sure to have mergesort sort both Rating and MetaScore.
 				std::cout << "merge" << endl;
 
 				auto start = chrono::high_resolution_clock::now();
-				//run the algorithm here
 				
-				//pass the output into print
-				//printList(Games, numGames);
+				mergeSort(Games, 0, Games.size() - 1);
+				printList(Games, Games.size());
 				auto stop = chrono::high_resolution_clock::now();
 				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
 				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
@@ -153,14 +151,10 @@ int main()
 
 		case 2:
 			//Updated: Asks users how many games they want to print. "all" prints every game.
-			std::cout << "How many games? (Type \"all\" to print every game.) ";
+			std::cout << "How many games?  ";
 			cin >> input;
-			if (input == "all") {
-				numGames = Games.size();
-			}
-			else {
-				numGames = stoi(input);
-			}
+
+			numGames = stoi(input);
 
 			std::cout << std::endl;
 			std::cout << "Sort by?" << endl;
@@ -183,7 +177,8 @@ int main()
 
 				auto start = chrono::high_resolution_clock::now();
 
-				quickSortHelper(Games, rating);
+				quickSort(Games, 0, Games.size() - 1, rating);
+				reverse(Games.begin(), Games.end());
 				printList(Games, numGames);
 
 				auto stop = chrono::high_resolution_clock::now();
@@ -198,9 +193,8 @@ int main()
 				std::cout << "merge" << endl;
 
 				auto start = chrono::high_resolution_clock::now();
-				//run the algorithm here
-				//pass the output into print
-				//printList(Games, numGames);
+				mergeSort(Games, 0, Games.size() - 1);
+				printList(Games, numGames);
 				auto stop = chrono::high_resolution_clock::now();
 				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
 				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
@@ -209,16 +203,6 @@ int main()
 			break;
 
 		case 3:
-			std::cout << "How many games? (Type \"all\" to print every game.) ";
-			cin >> input;
-			if (input == "all") {
-				numGames = Games.size();
-			}
-			else {
-				numGames = stoi(input);
-			}
-			std::cout << std::endl;
-
 			std::cout << "Sort by?" << endl;
 			std::cout << "1.User Rating" << endl;
 			std::cout << "2.Metascore" << endl;
@@ -236,13 +220,24 @@ int main()
 			{
 				std::cout << "Game Name: ";
 				cin >> input;
-				vector<Game> newList = searchList(Games, input, 1);
-				
+				vector<Game*> newList = searchList(Games, input, 1);
+
+				std::cout << "How many games? (Type \"all\" to print every game.) ";
+				cin >> input;
+				if (input == "all") {
+					numGames = newList.size();
+				}
+				else {
+					numGames = stoi(input);
+				}
+				std::cout << std::endl;
+
 				std::cout << "Quick Sort" << endl;
 
 				auto start = chrono::high_resolution_clock::now();
 
 				quickSort(newList, 0, newList.size() - 1, rating);
+				reverse(newList.begin(), newList.end());
 				printList(newList, numGames);
 
 				auto stop = chrono::high_resolution_clock::now();
@@ -254,16 +249,25 @@ int main()
 			{
 				std::cout << "Game Name: ";
 				cin >> input;
-				vector<Game> newList = searchList(Games, input, 1);
+				vector<Game*> newList = searchList(Games, input, 1);
+
+				std::cout << "How many games? (Type \"all\" to print every game.) ";
+				cin >> input;
+				if (input == "all") {
+					numGames = newList.size();
+				}
+				else {
+					numGames = stoi(input);
+				}
+				std::cout << std::endl;
+
 				//Use "newList" instead of "Games" here for mergesort as its an updated list of games for the name.
-				//Merge sort here
-				//test
+				
 				std::cout << "merge" << endl;
 
 				auto start = chrono::high_resolution_clock::now();
-				//run the algorithm here
-				//pass the output into print
-				//printList(newList, numGames);
+				mergeSort(newList, 0, newList.size() - 1);
+				printList(newList, numGames);
 				auto stop = chrono::high_resolution_clock::now();
 				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
 				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
@@ -272,15 +276,6 @@ int main()
 			break;
 
 		case 4:
-			std::cout << "How many games? (Type \"all\" to print every game.) ";
-			cin >> input;
-			if (input == "all") {
-				numGames = Games.size();
-			}
-			else {
-				numGames = stoi(input);
-			}
-
 			std::cout << "Sort by?" << endl;
 			std::cout << "1.User Rating" << endl;
 			std::cout << "2.Metascore" << endl;
@@ -298,13 +293,24 @@ int main()
 			{
 				std::cout << "Platform Name: ";
 				cin >> input;
-				vector<Game> newList = searchList(Games, input, 2);
+				vector<Game*> newList = searchList(Games, input, 2);
+
+				std::cout << "How many games? (Type \"all\" to print every game.) ";
+				cin >> input;
+				if (input == "all") {
+					numGames = newList.size();
+				}
+				else {
+					numGames = stoi(input);
+				}
+				std::cout << std::endl;
 
 				std::cout << "Quick Sort" << endl;
 
 				auto start = chrono::high_resolution_clock::now();
 
 				quickSort(newList, 0, newList.size() - 1, rating);
+				reverse(newList.begin(), newList.end());
 				printList(newList, numGames);
 
 				auto stop = chrono::high_resolution_clock::now();
@@ -316,16 +322,25 @@ int main()
 			{
 				std::cout << "Platform Name: ";
 				cin >> input;
-				vector<Game> newList = searchList(Games, input, 2);
+				vector<Game*> newList = searchList(Games, input, 2);
+
+				std::cout << "How many games? (Type \"all\" to print every game.) ";
+				cin >> input;
+				if (input == "all") {
+					numGames = newList.size();
+				}
+				else {
+					numGames = stoi(input);
+				}
+				std::cout << std::endl;
+
 				//Use "newList" instead of "Games" here for mergesort as its an updated list of games for the platform.
-				//Merge sort here
-				//test
+				
 				std::cout << "merge" << endl;
 
 				auto start = chrono::high_resolution_clock::now();
-				//run the algorithm here
-				//pass the output into print
-				//printList(Games, numGames);
+				mergeSort(newList, 0, newList.size() - 1);
+				printList(newList, numGames);
 				auto stop = chrono::high_resolution_clock::now();
 				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
 				std::cout << "Runtime: " << runtime.count() << " ms" << endl;

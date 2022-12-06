@@ -3,40 +3,27 @@
 #include <vector>
 #include <iostream>
 
-void swap(Game a, Game b)
+void swap(Game* a, Game* b)
 {
-    Game t = a;
-    a = b;
-    b = t;
-}
-
-int partition(vector<Game> vect, int low, int high) {
-    Game pivot = vect[high];
-    int i = (low - 1);
+	Game t = *a;
+	*a = *b;
+	*b = t;
 	
-    for (int j = low; j <= high - 1; j++) {
-		if (vect[j].getUser_review() == -1 ) {
-			vect[j].setUser_review(0);
-		}
-		else if(pivot.getUser_review() == -1) {
-			pivot.setUser_review(0);
-		}
-
-        if (vect[j].getUser_review() < pivot.getUser_review()) {
-            i++;
-            swap(vect[i], vect[j]);
-        }
-    }
-    swap(vect[i + 1], vect[high]);
-    return (i + 1);
 }
 
-int partition2(vector<Game> vect, int low, int high) {
-	Game pivot = vect[high];
+int partition(vector<Game*> vect, int low, int high) {
+	Game* pivot = vect[high];
 	int i = (low - 1);
 
 	for (int j = low; j <= high - 1; j++) {
-		if (vect[j].getMeta_score() < pivot.getMeta_score()) {
+		if (vect[j]->getUser_review() == -1) {
+			vect[j]->setUser_review(0);
+		}
+		else if (pivot->getUser_review() == -1) {
+			pivot->setUser_review(0);
+		}
+
+		if (vect[j]->getUser_review() < pivot->getUser_review()) {
 			i++;
 			swap(vect[i], vect[j]);
 		}
@@ -45,7 +32,21 @@ int partition2(vector<Game> vect, int low, int high) {
 	return (i + 1);
 }
 
-void quickSort(vector<Game> vect, int low, int high, int input)
+int partition2(vector<Game*> vect, int low, int high) {
+	Game* pivot = vect[high];
+	int i = (low - 1);
+
+	for (int j = low; j <= high - 1; j++) {
+		if (vect[j]->getMeta_score() < pivot->getMeta_score()) {
+			i++;
+			swap(vect[i], vect[j]);
+		}
+	}
+	swap(vect[i + 1], vect[high]);
+	return (i + 1);
+}
+
+void quickSort(vector<Game*> vect, int low, int high, int input)
 {
 	if (input == 1) {
 		if (low < high) {
