@@ -151,7 +151,7 @@ int main()
 				mergeSort(Games, 0, Games.size() - 1, rating);
 				reverse(Games.begin(), Games.end());
 				printList(Games, Games.size());
-				//reverse(Games.begin(), Games.end());
+				
 				auto stop = chrono::high_resolution_clock::now();
 				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
 				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
@@ -205,7 +205,7 @@ int main()
 				mergeSort(Games, 0, Games.size() - 1, rating);
 				reverse(Games.begin(), Games.end());
 				printList(Games, numGames);
-				reverse(Games.begin(), Games.end());
+				
 				auto stop = chrono::high_resolution_clock::now();
 				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
 				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
@@ -280,7 +280,7 @@ int main()
 				mergeSort(newList, 0, newList.size() - 1, rating);
 				reverse(newList.begin(), newList.end());
 				printList(newList, numGames);
-				reverse(Games.begin(), Games.end());
+				
 				auto stop = chrono::high_resolution_clock::now();
 				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
 				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
@@ -355,7 +355,7 @@ int main()
 				mergeSort(newList, 0, newList.size() - 1, rating);
 				reverse(newList.begin(), newList.end());
 				printList(newList, numGames);
-				reverse(Games.begin(), Games.end());
+				
 				auto stop = chrono::high_resolution_clock::now();
 				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
 				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
