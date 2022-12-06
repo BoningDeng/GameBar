@@ -9,7 +9,7 @@
 using namespace std;
 
 //Helper merge function
-void merge(vector<Game*> v, int start, int middle, int end){
+void merge(vector<Game*> &v, int start, int middle, int end){
     vector<Game*> temp;
 
 	int i, j;
@@ -45,7 +45,7 @@ void merge(vector<Game*> v, int start, int middle, int end){
     
 }
 
-void merge2(vector<Game*> v, int start, int middle, int end){
+void merge2(vector<Game*> &v, int start, int middle, int end){
     vector<Game*> temp;
 
 	int i, j;
@@ -81,7 +81,7 @@ void merge2(vector<Game*> v, int start, int middle, int end){
                     
 
 //MergeSort main function
-void mergeSort(vector<Game*> arr, int start, int end, int input){ 
+void mergeSort(vector<Game*> &arr, int start, int end, int input){ 
         if (start < end){
             if (input == 1) {
                 int middle = (start + end) / 2;
@@ -101,3 +101,5 @@ void mergeSort(vector<Game*> arr, int start, int end, int input){
  
   
 }  
+  
+
