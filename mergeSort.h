@@ -115,8 +115,8 @@ void mergeSort(vector<Game*> arr, int start, int end, int input){
         int middle = start + (end - start) / 2;
   
         //Recursively call mergeSort for left array (left to middle) and right array (middle to right)
-        mergeSort(arr, start, middle);
-        mergeSort(arr, middle + 1, end);
+        mergeSort(arr, start, middle, input);
+        mergeSort(arr, middle + 1, end, input);
         merge(arr, start, middle, end);
         
     } else if (input == 2) {
@@ -124,8 +124,8 @@ void mergeSort(vector<Game*> arr, int start, int end, int input){
             return; 
  
         int middle = start + (end - start) / 2;
-        mergeSort(arr, start, middle);
-        mergeSort(arr, middle + 1, end);
+        mergeSort(arr, start, middle, input);
+        mergeSort(arr, middle + 1, end, input);
         merge2(arr, start, middle, end);
     }   
   
