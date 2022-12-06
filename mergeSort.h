@@ -70,7 +70,7 @@ void merge(vector<Game*> &v, int start, int middle, int end){
 	}
 
 	while (right <= end) {
-		merged.push_back(v[j]);
+		merged.push_back(v[right]);
 		right++;
 	}
 
@@ -103,7 +103,7 @@ void merge2(vector<Game*> &v, int start, int middle, int end){
 	}
 
 	while (right <= end) {
-		merged.push_back(v[j]);
+		merged.push_back(v[right]);
 		right++;
 	}
 
