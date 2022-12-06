@@ -9,42 +9,8 @@
 using namespace std;
 
 //Helper merge function
-/*void merge(vector<Game*> &v, int start, int middle, int end){
-    vector<Game*> temp;
 
-	int i, j;
-	i = start;
-	j = middle + 1;
-
-	while (i <= middle && j <= end) {
-
-		if (v[i]->getUser_review() <= v[j]->getUser_review()) {
-			temp.push_back(v[i]);
-			++i;
-		}
-		else {
-			temp.push_back(v[j]);
-			++j;
-		}
-
-	}
-
-	while (i <= middle) {
-		temp.push_back(v[i]);
-		++i;
-	}
-
-	while (j <= end) {
-		temp.push_back(v[j]);
-		++j;
-	}
-
-	for (int i = start; i <= end; ++i)
-		v[i] = temp[i - start];
-
-    
-}*/
-
+//merge will sort based on user ratings.
 void merge(vector<Game*> &v, int start, int middle, int end){
         vector<Game*> merged;
 
@@ -78,6 +44,7 @@ void merge(vector<Game*> &v, int start, int middle, int end){
 		v[i] = merged[i - start];
 }
 
+//merge2 will sort based on critic rating (meta score).
 void merge2(vector<Game*> &v, int start, int middle, int end){
         vector<Game*> merged;
 
