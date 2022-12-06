@@ -189,8 +189,7 @@ int main()
 			}
 			else if (stoi(input) == 2)
 			{
-				//Merge sort here
-				//test
+				
 				std::cout << "merge" << endl;
 
 				auto start = chrono::high_resolution_clock::now();
@@ -269,7 +268,8 @@ int main()
 
 				auto start = chrono::high_resolution_clock::now();
 				mergeSort(newList, 0, newList.size() - 1, rating);
-				reverse(newList.begin(), newList.end());
+				if (input == "all")
+					reverse(newList.begin(), newList.end());
 				printList(newList, numGames);
 				auto stop = chrono::high_resolution_clock::now();
 				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
@@ -343,7 +343,8 @@ int main()
 
 				auto start = chrono::high_resolution_clock::now();
 				mergeSort(newList, 0, newList.size() - 1, rating);
-				reverse(newList.begin(), newList.end());
+				if (input == "all")
+					reverse(newList.begin(), newList.end());
 				printList(newList, numGames);
 				auto stop = chrono::high_resolution_clock::now();
 				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
