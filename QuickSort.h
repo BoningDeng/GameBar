@@ -66,17 +66,17 @@ void quickSort(vector<Game*> vect, int low, int high, int input)
 	}
 }
 
-void quickSortHelper(vector<Game> Games, int input) {
-	vector<Game> tempVect;
-	vector<Game> tempVect2;
-	vector<Game> tempVect3;
-	vector<Game> tempVect4;
-	vector<Game> tempVect5;
-	vector<Game> tempVect6;
-	vector<Game> tempVect7;
-	vector<Game> tempVect8;
-	vector<Game> tempVect9;
-	vector<Game> tempVect10;
+void quickSortHelper(vector<Game*> Games, int input) {
+	vector<Game*> tempVect;
+	vector<Game*> tempVect2;
+	vector<Game*> tempVect3;
+	vector<Game*> tempVect4;
+	vector<Game*> tempVect5;
+	vector<Game*> tempVect6;
+	vector<Game*> tempVect7;
+	vector<Game*> tempVect8;
+	vector<Game*> tempVect9;
+	vector<Game*> tempVect10;
 	for (int i = 0; i < 2000; i++) {
 		tempVect.push_back(Games[i]);
 	}
@@ -138,7 +138,7 @@ void quickSortHelper(vector<Game> Games, int input) {
 	quickSort(tempVect10, 0, tempVect10.size() - 1, input);
 	std::cout << "10/10" << std::endl;
 
-	vector<Game> Games2;
+	vector<Game*> Games2;
 	for (int i = 0; i < tempVect.size(); i++) {
 		Games2.push_back(tempVect[i]);
 	}
