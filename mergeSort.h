@@ -33,10 +33,11 @@ void merge(vector<Game*> arr, int left, int middle, int right){
     // Merge both temp arrays into a single 
     while (leftIndex < leftSub && rightIndex < rightSub) {
         if (L[leftIndex]->getUser_review() == -1) {
-			L[leftIndex]->setUser_review(0);
-	    if (R[rightIndex]->getUser_review() == -1) {
-			R[rightIndex]->setUser_review(0);
-		}
+		L[leftIndex]->setUser_review(0);
+	}
+	if (R[rightIndex]->getUser_review() == -1) {
+		R[rightIndex]->setUser_review(0);
+        }
         if (L[leftIndex]->getUser_review() <= R[rightIndex]->getUser_review()) {
             arr[merged] = L[leftIndex];
             leftIndex++;
@@ -86,10 +87,11 @@ void merge2(vector<Game*> arr, int left, int middle, int right){
     // Merge both temp arrays into a single 
     while (leftIndex < leftSub && rightIndex < rightSub) {
         if (L[leftIndex]->getMeta_score() == -1) {
-			L[leftIndex]->setMeta_score(0);
-	    if (R[rightIndex]->getMeta_score() == -1) {
-			R[rightIndex]->setMeta_score(0);
-		}
+		L[leftIndex]->setMeta_score(0);
+	}
+	if (R[rightIndex]->getMeta_score() == -1) {
+		R[rightIndex]->setMeta_score(0);
+	}
         if (L[leftIndex]->getMeta_score() <= R[rightIndex]->getMeta_score()) {
             arr[merged] = L[leftIndex];
             leftIndex++;
