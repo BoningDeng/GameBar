@@ -314,7 +314,6 @@ int main()
 
 				quickSort(newList, 0, newList.size() - 1, rating);
 				reverse(newList.begin(), newList.end());
-				reverse(newList.begin(), newList.end());
 				printList(newList, numGames);
 
 				auto stop = chrono::high_resolution_clock::now();
