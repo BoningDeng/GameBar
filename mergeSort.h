@@ -76,7 +76,7 @@ void merge2(vector<Game*> arr, int left, int middle, int right){
     //Declare indexes for the temporary arrays, those will be updated while merging
     int leftIndex = 0;
     int rightIndex = 0;
-    int merged = 0;
+    int merged = left;
  
     // Merge both temp arrays into a single 
     while (leftIndex < leftSub && rightIndex < rightSub) {
@@ -107,26 +107,23 @@ void merge2(vector<Game*> arr, int left, int middle, int right){
                     
 
 //MergeSort main function
-void mergeSort(vector<Game*> arr, int start, int end){ 
-    if (input == 1){
-        if (start >= end)
-            return; 
- 
-        int middle = start + (end - start) / 2;
+void mergeSort(vector<Game*> arr, int start, int end, int input){ 
+        if (start < end){
+            if (input == 1) {
+                int middle = (start + end) / 2;
   
-        //Recursively call mergeSort for left array (left to middle) and right array (middle to right)
-        mergeSort(arr, start, middle);
-        mergeSort(arr, middle + 1, end);
-        merge(arr, start, middle, end);
-        
-    } else if (input == 2) {
-        if (start >= end)
-            return; 
+            //Recursively call mergeSort for left array (left to middle) and right array (middle to right)
+            mergeSort(arr, start, middle, input);
+            mergeSort(arr, middle + 1, end, input);
+            merge(arr, start, middle, end);
+            } else if (input == 2) {
  
-        int middle = start + (end - start) / 2;
-        mergeSort(arr, start, middle);
-        mergeSort(arr, middle + 1, end);
-        merge2(arr, start, middle, end);
-    }   
+                int middle = start + (end - start) / 2;
+                mergeSort(arr, start, middle, input);
+                mergeSort(arr, middle + 1, end, input);
+                merge2(arr, start, middle, end);
+            }   
+        }
+ 
   
 }  
