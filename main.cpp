@@ -193,9 +193,8 @@ int main()
 				std::cout << "merge" << endl;
 
 				auto start = chrono::high_resolution_clock::now();
-				//run the algorithm here
-				//pass the output into print
-				//printList(Games, numGames);
+				mergeSort(Games, 0, Games.size() - 1);
+				printList(Games, numGames);
 				auto stop = chrono::high_resolution_clock::now();
 				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
 				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
@@ -263,14 +262,12 @@ int main()
 				std::cout << std::endl;
 
 				//Use "newList" instead of "Games" here for mergesort as its an updated list of games for the name.
-				//Merge sort here
-				//test
+				
 				std::cout << "merge" << endl;
 
 				auto start = chrono::high_resolution_clock::now();
-				//run the algorithm here
-				//pass the output into print
-				//printList(newList, numGames);
+				mergeSort(newList, 0, newList.size() - 1);
+				printList(newList, numGames);
 				auto stop = chrono::high_resolution_clock::now();
 				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
 				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
@@ -338,14 +335,12 @@ int main()
 				std::cout << std::endl;
 
 				//Use "newList" instead of "Games" here for mergesort as its an updated list of games for the platform.
-				//Merge sort here
-				//test
+				
 				std::cout << "merge" << endl;
 
 				auto start = chrono::high_resolution_clock::now();
-				//run the algorithm here
-				//pass the output into print
-				//printList(Games, numGames);
+				mergeSort(newList, 0, newList.size() - 1);
+				printList(newList, numGames);
 				auto stop = chrono::high_resolution_clock::now();
 				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
 				std::cout << "Runtime: " << runtime.count() << " ms" << endl;
