@@ -9,6 +9,7 @@ using namespace std;
 //Updated: printList to intake a value which could be the size of Games.
 void printList(vector<Game*> output, int value)
 {
+	std::cout << "----------------------------------------------------------" << endl;
 	for (int i = 0; i < value; i++)
 	{
 		std::cout << "Name: " << output[i]->getName() << endl;
@@ -150,7 +151,7 @@ int main()
 				mergeSort(Games, 0, Games.size() - 1, rating);
 				reverse(Games.begin(), Games.end());
 				printList(Games, Games.size());
-				reverse(Games.begin(), Games.end());
+				//reverse(Games.begin(), Games.end());
 				auto stop = chrono::high_resolution_clock::now();
 				auto runtime = chrono::duration_cast<chrono::microseconds>(stop - start);
 				std::cout << "Runtime: " << runtime.count() << " ms" << endl;

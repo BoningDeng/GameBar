@@ -13,6 +13,7 @@ private:
 	float user_review;
 public:
 	Game(string name_, string platform_, string release_date_, string summary_, int meta_score_, float user_review_);
+	~Game() { };
 	string getName();
 	string getPlatform();
 	string getRelease_date();
@@ -26,6 +27,7 @@ public:
 	void setRelease_Date(std::string newReview);
 	void setSummary(std::string newReview);
 };
+
 
 Game::Game(string name_, string platform_, string release_date_, string summary_, int meta_score_, float user_review_)
 {
