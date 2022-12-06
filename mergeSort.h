@@ -9,16 +9,16 @@
 using namespace std;
 
 //Helper merge function
-void merge(vector<Game*> v, int s, int m, int e){
+void merge(vector<Game*> v, int start, int middle, int end){
     vector<Game*> temp;
 
 	int i, j;
-	i = s;
-	j = m + 1;
+	i = start;
+	j = middle + 1;
 
-	while (i <= m && j <= e) {
+	while (i <= middle && j <= end) {
 
-		if (v[i]->getUser_score <= v[j]->getUser_Score) {
+		if (v[i]->getUser_review() <= v[j]->getUser_review()) {
 			temp.push_back(v[i]);
 			++i;
 		}
@@ -29,32 +29,32 @@ void merge(vector<Game*> v, int s, int m, int e){
 
 	}
 
-	while (i <= m) {
+	while (i <= middle) {
 		temp.push_back(v[i]);
 		++i;
 	}
 
-	while (j <= e) {
+	while (j <= end) {
 		temp.push_back(v[j]);
 		++j;
 	}
 
-	for (int i = s; i <= e; ++i)
-		v[i] = temp[i - s];
+	for (int i = start; i <= end; ++i)
+		v[i] = temp[i - start];
 
     
 }
 
-void merge2(vector<Game*> v, int s, int m, int e){
+void merge2(vector<Game*> v, int start, int middle, int end){
     vector<Game*> temp;
 
 	int i, j;
-	i = s;
-	j = m + 1;
+	i = start;
+	j = middle + 1;
 
-	while (i <= m && j <= e) {
+	while (i <= middle && j <= end) {
 
-		if (v[i]->getUser_score <= v[j]->getUser_Score) {
+		if (v[i]->getMeta_score() <= v[j]->getMeta_score()) {
 			temp.push_back(v[i]);
 			++i;
 		}
@@ -65,18 +65,18 @@ void merge2(vector<Game*> v, int s, int m, int e){
 
 	}
 
-	while (i <= m) {
+	while (i <= middle) {
 		temp.push_back(v[i]);
 		++i;
 	}
 
-	while (j <= e) {
+	while (j <= end) {
 		temp.push_back(v[j]);
 		++j;
 	}
 
-	for (int i = s; i <= e; ++i)
-		v[i] = temp[i - s];
+	for (int i = start; i <= end; ++i)
+		v[i] = temp[i - start];
 }
                     
 
