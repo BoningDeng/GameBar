@@ -9,114 +9,76 @@
 using namespace std;
 
 //Helper merge function
-void merge(vector<Game*> arr, int left, int middle, int right) {
-    int const leftSub = middle - left + 1;
-    int const rightSub = right - middle;
+void merge(vector<Game*> v, int start, int middle, int end){
+    vector<Game*> temp;
 
-    // Create temp arrays for left and right 
-    vector<Game*> L, R;
+	int i, j;
+	i = start;
+	j = middle + 1;
 
-    L.resize(leftSub);
-    R.resize(rightSub);
+	while (i <= middle && j <= end) {
 
-    // Copy data from our game Array into the temporary arrays.
-    for (int i = 0; i < leftSub; i++)
-        L[i] = arr[left + i];
-    for (int i = 0; i < rightSub; i++)
-        R[i] = arr[middle + 1 + i];
+		if (v[i]->getUser_review() <= v[j]->getUser_review()) {
+			temp.push_back(v[i]);
+			++i;
+		}
+		else {
+			temp.push_back(v[j]);
+			++j;
+		}
 
-    //Declare indexes for the temporary arrays, those will be updated while merging
-    int leftIndex = 0;
-    int rightIndex = 0;
-    int merged = left;
- 
-    // Merge both temp arrays into a single 
-    while (leftIndex < leftSub && rightIndex < rightSub) {
-        if (L[leftIndex]->getUser_review() == -1) {
-		L[leftIndex]->setUser_review(0);
 	}
-	if (R[rightIndex]->getUser_review() == -1) {
-		R[rightIndex]->setUser_review(0);
-        }
-        if (L[leftIndex]->getUser_review() <= R[rightIndex]->getUser_review()) {
-            arr[merged] = L[leftIndex];
-            leftIndex++;
-        }
-        else {
-            arr[merged] = R[rightIndex];
-            rightIndex++;
-        }
-        merged++;
-    }
 
-    // Copy the remaining elements of left and right
-    while (leftIndex < leftSub) {
-        arr[merged] = L[leftIndex];
-        leftIndex++;
-        merged++;
-    }
-    while (rightIndex < rightSub) {
-        arr[merged] = R[rightIndex];
-        rightIndex++;
-        merged++;
-    }
+	while (i <= middle) {
+		temp.push_back(v[i]);
+		++i;
+	}
 
+	while (j <= end) {
+		temp.push_back(v[j]);
+		++j;
+	}
+
+	for (int i = start; i <= end; ++i)
+		v[i] = temp[i - start];
+
+    
 }
 
-void merge2(vector<Game*> arr, int left, int middle, int right) {
-    int const leftSub = middle - left + 1;
-    int const rightSub = right - middle;
+void merge2(vector<Game*> v, int start, int middle, int end){
+    vector<Game*> temp;
 
-    // Create temp arrays for left and right 
-    vector<Game*> L, R;
+	int i, j;
+	i = start;
+	j = middle + 1;
 
-    L.resize(leftSub);
-    R.resize(rightSub);
+	while (i <= middle && j <= end) {
 
-    // Copy data from our game Array into the temporary arrays.
-    for (int i = 0; i < leftSub; i++)
-        L[i] = arr[left + i];
-    for (int i = 0; i < rightSub; i++)
-        R[i] = arr[middle + 1 + i];
+		if (v[i]->getMeta_score() <= v[j]->getMeta_score()) {
+			temp.push_back(v[i]);
+			++i;
+		}
+		else {
+			temp.push_back(v[j]);
+			++j;
+		}
 
-    //Declare indexes for the temporary arrays, those will be updated while merging
-    int leftIndex = 0;
-    int rightIndex = 0;
-    int merged = left;
- 
-    // Merge both temp arrays into a single 
-    while (leftIndex < leftSub && rightIndex < rightSub) {
-        if (L[leftIndex]->getMeta_score() == -1) {
-		L[leftIndex]->setMeta_score(0);
 	}
-	if (R[rightIndex]->getMeta_score() == -1) {
-		R[rightIndex]->setMeta_score(0);
+
+	while (i <= middle) {
+		temp.push_back(v[i]);
+		++i;
 	}
-        if (L[leftIndex]->getMeta_score() <= R[rightIndex]->getMeta_score()) {
-            arr[merged] = L[leftIndex];
-            leftIndex++;
-        }
-        else {
-            arr[merged] = R[rightIndex];
-            rightIndex++;
-        }
-        merged++;
-    }
 
-    // Copy the remaining elements of left and right
-    while (leftIndex < leftSub) {
-        arr[merged] = L[leftIndex];
-        leftIndex++;
-        merged++;
-    }
-    while (rightIndex < rightSub) {
-        arr[merged] = R[rightIndex];
-        rightIndex++;
-        merged++;
-    }
+	while (j <= end) {
+		temp.push_back(v[j]);
+		++j;
+	}
 
+	for (int i = start; i <= end; ++i)
+		v[i] = temp[i - start];
 }
-
+                    
 
 //MergeSort main function
 void mergeSort(vector<Game*> arr, int start, int end, int input){ 
