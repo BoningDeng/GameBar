@@ -51,9 +51,9 @@ void merge(vector<Game*> &v, int start, int middle, int end){
 	int left = start;
         int right = middle + 1;
 
-	while (i <= middle && j <= end) {
+	while (left <= middle && right <= end) {
 
-		if (v[left]->getMeta_score() <= v[right]->getMeta_score()) {
+		if (v[left]->getUser_review() <= v[right]->getUser_review()) {
 			merged.push_back(v[left]);
 			left++;
 		}
@@ -84,7 +84,7 @@ void merge2(vector<Game*> &v, int start, int middle, int end){
 	int left = start;
         int right = middle + 1;
 
-	while (i <= middle && j <= end) {
+	while (left <= middle && right <= end) {
 
 		if (v[left]->getMeta_score() <= v[right]->getMeta_score()) {
 			merged.push_back(v[left]);
