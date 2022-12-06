@@ -14,15 +14,15 @@ void printList(vector<Game*> output, int value)
 	{
 		std::cout << "Name: " << output[i]->getName() << endl;
 		std::cout << "Platform: " << output[i]->getPlatform() << endl;
-		std::cout << "Release Date:" << output[i]->getRelease_date() << endl;
+		std::cout << "Release Date: " << output[i]->getRelease_date() << endl;
 		std::cout << "Meta Score: " << output[i]->getMeta_score() << endl;
 		if (output[i]->getUser_review() == -1)
 		{
-			std::cout << "User Review:" << "TBD" << endl;
+			std::cout << "User Review: " << "TBD" << endl;
 		}
 		else
 		{
-			std::cout << "User Review:" << output[i]->getUser_review() << endl;
+			std::cout << "User Review: " << output[i]->getUser_review() << endl;
 		}
 		std::cout << "Summary: " << output[i]->getSummary() << endl;
 		std::cout << " " << endl;
@@ -145,7 +145,7 @@ int main()
 			}
 			else if (stoi(input) == 2)
 			{
-				std::cout << "merge" << endl;
+				std::cout << "Merge Sort" << endl;
 
 				auto start = chrono::high_resolution_clock::now();
 				
@@ -200,7 +200,7 @@ int main()
 			else if (stoi(input) == 2)
 			{
 				
-				std::cout << "merge" << endl;
+				std::cout << "Merge Sort" << endl;
 
 				auto start = chrono::high_resolution_clock::now();
 				mergeSort(Games, 0, Games.size() - 1, rating);
@@ -215,6 +215,7 @@ int main()
 			break;
 
 		case 3:
+			std::cout << std::endl;
 			std::cout << "Sort by?" << endl;
 			std::cout << "1.User Rating" << endl;
 			std::cout << "2.Metascore" << endl;
@@ -228,12 +229,15 @@ int main()
 			std::cout << "2.Merge sort" << endl;
 			std::cout << "Input: ";
 			cin >> input;
+
 			if (stoi(input) == 1)
 			{
+				std::cout << std::endl;
 				std::cout << "Game Name: ";
 				cin >> input;
 				vector<Game*> newList = searchList(Games, input, 1);
 
+				std::cout << std::endl;
 				std::cout << "How many games? (Type \"all\" to print every game.) ";
 				cin >> input;
 				if (input == "all") {
@@ -275,7 +279,7 @@ int main()
 
 				//Use "newList" instead of "Games" here for mergesort as its an updated list of games for the name.
 				
-				std::cout << "merge" << endl;
+				std::cout << "Merge Sort" << endl;
 
 				auto start = chrono::high_resolution_clock::now();
 				mergeSort(newList, 0, newList.size() - 1, rating);
@@ -290,6 +294,7 @@ int main()
 			break;
 
 		case 4:
+			std::cout << std::endl;
 			std::cout << "Sort by?" << endl;
 			std::cout << "1.User Rating" << endl;
 			std::cout << "2.Metascore" << endl;
@@ -303,6 +308,7 @@ int main()
 			std::cout << "2.Merge sort" << endl;
 			std::cout << "Input: ";
 			cin >> input;
+			std::cout << std::endl;
 			if (stoi(input) == 1)
 			{
 				std::cout << "Platform Name: ";
@@ -350,7 +356,7 @@ int main()
 
 				//Use "newList" instead of "Games" here for mergesort as its an updated list of games for the platform.
 				
-				std::cout << "merge" << endl;
+				std::cout << "Merge Sort" << endl;
 
 				auto start = chrono::high_resolution_clock::now();
 				mergeSort(newList, 0, newList.size() - 1, rating);
