@@ -24,7 +24,7 @@ void printList(vector<Game*> output, int value)
 		{
 			std::cout << "User Review:" << output[i]->getUser_review() << endl;
 		}
-		//std::cout << "Summary: " << output[i]->getSummary() << endl;
+		std::cout << "Summary: " << output[i]->getSummary() << endl;
 		std::cout << " " << endl;
 	}
 }
@@ -96,7 +96,7 @@ int main()
 		std::cout << "----------------" << endl;
 		std::cout << "|   Game Bar   |" << endl;
 		std::cout << "----------------" << endl;
-		std::cout << "Created By: Boning Deng, Asaf Mendes, Radoslav Savenkov"
+		std::cout << "Created By: Boning Deng, Asaf Mendes, Radoslav Savenkov" << endl;
 		std::cout << "Total Games: " << Games.size() << endl;
 		std::cout << std::endl;
 		std::cout << "0.Exit" << endl;
