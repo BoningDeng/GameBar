@@ -14,7 +14,7 @@ void merge(vector<Game*> arr, int left, int middle, int right){
     int const rightSub = right - middle;
  
     // Create temp arrays for left and right 
-    vector<Game> L, R;
+    vector<Game*> L, R;
     
     L.resize(leftSub);
     R.resize(rightSub);
